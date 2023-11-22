@@ -294,6 +294,7 @@ formatted_dfs3 = read_and_format_excel('ticari kredi bilgileri.xlsx')
 ticari_kredi_akordiyon = create_accordion_with_tables(formatted_dfs3)
 
 app = JupyterDash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
 app.layout = html.Div([
     # This div represents the grey background
