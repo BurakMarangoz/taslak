@@ -1,4 +1,3 @@
-from jupyter_dash import JupyterDash
 import dash
 from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
