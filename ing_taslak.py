@@ -1,7 +1,6 @@
 import dash
 from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
-import dash_daq as daq
 import pandas as pd
 import plotly.graph_objs as go
 import dash_bootstrap_components as dbc
@@ -155,27 +154,6 @@ fig_pd.update_xaxes(title_text='')
 fig_memzuc_risk.update_xaxes(title_text='')
 fig_bank_memzuc_risk.update_xaxes(title_text='')
 fig_tbe_tkn.update_xaxes(title_text='')
-
-def create_daq_gauge(value, title):
-    return daq.Gauge(
-        color={"gradient": True, "ranges": {"red": [0, 30], "yellow": [30, 70], "green": [70, 100]}},
-        value=value,
-        max=100,
-        label=title,
-        showCurrentValue=True,
-        size=150)
-
-gauge_LGD_oran = create_daq_gauge(30, 'LGD_oran')
-gauge_Cari_oran = create_daq_gauge(50, 'Cari_oran')
-
-gostergeler_layout = html.Div([
-    dbc.Row([dbc.Col(gauge_LGD_oran, width=4),
-             dbc.Col(gauge_Cari_oran, width=4),
-             dbc.Col(gauge_Cari_oran, width=4)]),
-    dbc.Row([dbc.Col(gauge_LGD_oran, width=4),
-             dbc.Col(gauge_Cari_oran, width=4),
-             dbc.Col(gauge_Cari_oran, width=4)])
-])
 
 excel_path = 'Banka iç bilgiler.xlsx'
 excel_data = pd.ExcelFile(excel_path)
@@ -354,11 +332,6 @@ app.layout = html.Div([
                         dbc.Col(dcc.Graph(figure=fig_tbe_tkn), width=6)
                     ])
                 ])
-            ], start_collapsed=True),
-            dbc.Accordion([
-                dbc.AccordionItem(
-                    title="Göstergeler",
-                    children=[gostergeler_layout])
             ], start_collapsed=True),
 
             html.Hr(),
