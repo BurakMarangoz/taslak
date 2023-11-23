@@ -6,6 +6,7 @@ import plotly.graph_objs as go
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import datetime
+from dash import Dash
 
 xls = pd.ExcelFile('kurallar.xlsx')
 sheet_to_df_map = {sheet_name: xls.parse(sheet_name) for sheet_name in xls.sheet_names}
