@@ -3,4 +3,4 @@ gunicorn
 pandas
 dash-bootstrap-components
 openpyxl
-import dash_auth
+dash_auth
