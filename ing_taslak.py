@@ -7,6 +7,13 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 import datetime
 from dash import Dash
+import dash_auth
+
+
+USERNAME_PASSWORD_PAIRS = [
+    ['ingkdsing', '212121']
+]
+
 
 xls = pd.ExcelFile('kurallar.xlsx')
 sheet_to_df_map = {sheet_name: xls.parse(sheet_name) for sheet_name in xls.sheet_names}
@@ -271,6 +278,7 @@ formatted_dfs3 = read_and_format_excel('ticari kredi bilgileri.xlsx')
 ticari_kredi_akordiyon = create_accordion_with_tables(formatted_dfs3)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+auth = dash_auth.BasicAuth(app,USERNAME_PASSWORD_PAIRS)
 server = app.server
 
 app.layout = html.Div([
